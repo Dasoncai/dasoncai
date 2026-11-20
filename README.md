@@ -1,25 +1,37 @@
 # Dasoncai / RDK Vision Lab
 
-Bilingual camera and edge-AI experiment catalog for RDK X5 and RDK S100. A light, card-based interface with independent camera/model filters, search, shareable filter URLs, detail pages, notes and about views.
+Bilingual camera and edge-AI experiment catalog for RDK X5 and RDK S100, published on GitHub Pages.
 
-## Local preview
+Site: https://dasoncai.github.io/dasoncai/
 
-Serve this directory over HTTP, for example `python -m http.server 4173`, then open http://localhost:4173/. ES modules require HTTP; opening the HTML directly from disk is not supported.
+## Add a case
 
-## Content
+Read [the publishing guide](AUTHORING.md). Copy a template from `templates/` to `content/articles/`, fill the YAML metadata and Markdown body, and put media in `assets/<case-id>/`. Set `draft: false` to publish. No frontend code changes are needed.
 
-Edit `core.mjs`. Each experiment has a stable ID, bilingual title/description, target platforms, stage, filter metadata and related experiment IDs. Camera records have sensor/shutter/connection fields; model records have task/family fields. Detail outlines are stored by workflow stage.
+- `templates/camera.zh.md`: Sensor integration, bring-up, image debugging and ISP.
+- `templates/model.zh.md`: model training, edge inference and performance optimization.
+- `templates/metrics.csv`: performance data header; fill with real measurements.
 
-Current records are **experiment plans**, not verified integrations or benchmarks. All covers are original SVG illustrations and explicitly labeled as illustrations. Sensor models and shutter types remain unknown until actual hardware is supplied. A card targeting both platforms does not claim either has been validated. Training platform tags refer to deployment targets, not training hosts.
+Supports local images, MP4/WebM playback, external HTTPS video links, CSV measurement tables/downloads, logs and source links. Markdown tables, fenced code and generated article contents are supported. One-language articles display an explicit fallback notice in the other interface language.
 
-When publishing results, add real evidence, environment/SDK versions, configuration, reproduction steps, code revisions and measurement conditions. Update the content schema and UI status together; never relabel a plan as verified without evidence. Keep camera interfaces and shutter types separate. SerDes is a connection category; record the actual link protocol and board-side interface in the experiment details.
+## Preview and checks
 
-## Deployment
+```shell
+python -m pip install -r requirements.txt
+python -m unittest discover -s tests
+python scripts/build.py
+node tests/catalog.test.mjs
+python -m http.server 4173 --directory _site
+```
 
-https://dasoncai.github.io/dasoncai/
+Open http://localhost:4173/. ES modules require HTTP. Rebuild and reload after edits. Node is only needed for the catalog check; Python builds the website.
 
-Push main to deploy with GitHub Actions. The workflow stages an explicit public-file allowlist so repository metadata, notes and development files are not published.
+`_site/` is generated and ignored. GitHub Actions runs the same checks, builds and publishes only public pages, generated article data and referenced assets. Draft articles and unreferenced assets are excluded from the website, but all files committed to this public GitHub repository remain public in its source/history.
 
-## License / attribution
+## Plans and verified records
 
-Layout inspired by the general light catalog style of RDK Model Zoo. No upstream code, logos, images or experimental results were copied. This is an independent personal lab, not official RDK documentation.
+`planned` means an experiment plan. `verified` means the author has validated the documented scope; the build requires date, environment, scope, conclusion, limitations and evidence. It checks completeness, not the truth of hardware claims or measurements. Current eight cases remain plans pending real evidence.
+
+Sensor models, model families and tasks are collected from published Markdown metadata. Shutter types and connections remain separate. Connection filters include Direct MIPI, USB, SerDes and Internet Protocol Camera. Unknown connections remain unclassified and are not relabeled as IP cameras.
+
+Layout inspired by the general light catalog style of RDK Model Zoo. No upstream code, logos or experimental results were copied. This is an independent personal lab, not official RDK documentation.

@@ -6,8 +6,8 @@ export const labels = {
 export const translate = (value, language = 'zh') => typeof value === 'object' && value !== null ? (value[language] ?? value.zh ?? value.en ?? '') : String(value ?? '');
 export const experiments = [];
 export const facets = {
- camera: [ ['platform',['RDK X5','RDK S100']], ['sensor',['unknown']], ['shutter',['rolling','global','unknown']], ['connection',['Direct MIPI','USB','SerDes','Internet Protocol Camera']], ['stage',['capture','isp']], ['status',['planned','verified']] ],
- models: [ ['platform',['RDK X5','RDK S100']], ['task',['detection']], ['family',['YOLO']], ['stage',['train','deploy','optimize']], ['status',['planned','verified']] ]
+ camera: [ ['platform',['RDK X5','RDK S100']], ['sensor',['unknown']], ['shutter',['rolling','global']], ['connection',['Direct MIPI','USB','SerDes','Internet Protocol Camera']] ],
+ models: [ ['platform',['RDK X5','RDK S100']], ['task',['detection']], ['family',['YOLO']] ]
 };
 export function matches(item, {kind='camera', query='', filters={}} = {}, ignore='') {
  if(item.kind !== kind) return false;

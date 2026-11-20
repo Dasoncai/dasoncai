@@ -23,7 +23,7 @@ Markdown 开头两条 `---` 之间是 YAML 信息区。保持缩进，字符串�
 - `platforms: [RDK X5]` 或 `[RDK S100]`：案例适用的平台。共同验证可填两个；计划中填写目标平台。
 - 相机字段：`sensor` 填具体型号；`shutter` 填 `rolling` / `global` / `unknown`；`connection` 填 `Direct MIPI` / `USB` / `SerDes` / `Internet Protocol Camera`。尚未确认时可保留 `unknown`，不会误归类到 IP Camera。
 - 相机 `stage`：`capture` 或 `isp`。
-- 模型字段：`family`、`model_version`、`task`；`task: detection` 表示目标检测，也可写其他任务名称。型号、模型系列和任务筛选会自动读取文章信息。
+- 模型字段：`family`、`model_version`、`task`；`task: detection` 表示目标检测，也可写其他任务名称。型号、模型系列和任务筛选会自动读取文章信息。实践环节与验证状态保留在案例信息中，不作为侧栏筛选；快门筛选只显示卷帘与全局。
 - 模型 `stage`：`train` / `deploy` / `optimize`。
 - `related: [另一个案例id]`：关联文章；无关联填写 `[]`。
 

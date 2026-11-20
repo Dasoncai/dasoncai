@@ -82,6 +82,7 @@ class ContentTests(unittest.TestCase):
   import shutil
   repo=Path(__file__).resolve().parents[1]
   for name in ['index.html','detail.html','app.js','core.mjs','style.css','favicon.svg']:shutil.copy2(repo/name,self.root/name)
+  (self.root/'fonts.css').write_text('/* Unit test font stylesheet */',encoding='utf-8')
   image=self.asset('image.png',b'first-version');self.asset('unreferenced.log')
   self.write({**self.meta,'cover':{'src':image,'alt':'test','kind':'illustration'}},body='## Image\n\n![image](../../assets/case/image.png)')
   lab.build(self.root)

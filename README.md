@@ -35,3 +35,9 @@ Open http://localhost:4173/. ES modules require HTTP. Rebuild and reload after e
 Sensor models, model families and tasks are collected from published Markdown metadata. Shutter types and connections remain separate. Connection filters include Direct MIPI, USB, SerDes and Internet Protocol Camera. Unknown connections remain unclassified and are not relabeled as IP cameras.
 
 Layout inspired by the general light catalog style of RDK Model Zoo. No upstream code, logos or experimental results were copied. This is an independent personal lab, not official RDK documentation.
+
+## Typography and filters
+
+Self-hosted Manrope 600 for headings, Inter 400 for English text, Noto Sans SC 400 for Chinese glyphs, and Inter 500 for navigation and technical values. Font sources and SIL OFL licenses are in assets/fonts/. Unicode subsets load on demand.
+
+Camera filters: platform, Sensor model, shutter (rolling/global only), and connection. Model filters: platform, task, model family. Workflow stage and verification status remain article metadata and are not sidebar filters.

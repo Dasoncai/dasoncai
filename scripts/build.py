@@ -253,8 +253,13 @@ def build(root=ROOT):
     if out.exists():shutil.rmtree(out)
     out.mkdir()
     # All content is generated before replacing the deployment directory.
-    for name in ['index.html','detail.html','app.js','core.mjs','style.css','favicon.svg']:
+    for name in ['index.html','detail.html','app.js','core.mjs','style.css','fonts.css','favicon.svg']:
         shutil.copy2(root/name,out/name)
+    font_css=(root/'fonts.css').read_text(encoding='utf-8-sig')
+    for font in re.findall(r'url\((assets/fonts/[^)]+)\)',font_css):
+        assets.add(local_asset(font,root,{'.woff2'}))
+    for license_path in (root/'assets/fonts').glob('*-OFL.txt'):
+        assets.add(license_path.relative_to(root).as_posix())
     for asset in assets:
         destination=out/asset;destination.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(root/asset,destination)
     def asset_version(path):
@@ -275,9 +280,9 @@ def build(root=ROOT):
             item['articles'][lang]=path+'?v='+revision
     for name,payload in articles.items():write_json(out/name,payload)
     write_json(out/'generated/catalog.json',items)
-    version=hashlib.sha256(''.join((root/x).read_text(encoding='utf-8-sig') for x in ['app.js','core.mjs','style.css']).encode()).hexdigest()[:12]
+    version=hashlib.sha256(''.join((root/x).read_text(encoding='utf-8-sig') for x in ['app.js','core.mjs','style.css','fonts.css']).encode()).hexdigest()[:12]
     for file in ['index.html','detail.html']:
-        text=(out/file).read_text(encoding='utf-8-sig').replace('href="style.css"',f'href="style.css?v={version}"').replace('src="app.js"',f'src="app.js?v={version}"')
+        text=(out/file).read_text(encoding='utf-8-sig').replace('href="style.css"',f'href="style.css?v={version}"').replace('src="app.js"',f'src="app.js?v={version}"').replace('href="fonts.css"',f'href="fonts.css?v={version}"')
         (out/file).write_text(text,encoding='utf-8')
     app=(out/'app.js').read_text(encoding='utf-8-sig').replace("from './core.mjs'",f"from './core.mjs?v={version}'")
     (out/'app.js').write_text(app,encoding='utf-8')

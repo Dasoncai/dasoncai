@@ -1,11 +1,13 @@
-# Dasoncai portfolio
+# RDK X5 Vision Lab
 
-Responsive bilingual static portfolio. Open index.html directly, or serve this directory with any static HTTP server. No build dependencies.
+Bilingual technical blog for RDK X5 development and validation: camera integration, ISP tuning, on-device YOLO inference, and results.
 
-Content describes areas of interest; no unpublished projects or blog articles are represented as completed work. Edit index.html to add verified projects and articles. Language choice is stored locally when available.
+Open index.html locally. No build dependencies. Edit bilingual data-zh/data-en attributes together. Experiment notes and results are explicitly pending until real evidence is supplied.
 
-## GitHub Pages
-Push main to Dasoncai/dasoncai, then select Settings > Pages > Source > GitHub Actions. The included workflow publishes the site. Expected project URL: https://dasoncai.github.io/dasoncai/ . A custom domain or repository rename changes that URL.
+For each experiment, record board/OS/SDK versions, camera or model details, configuration, reproduction steps, test conditions, images or video, measurements, conclusions and code revision.
 
-## Verification limits
-The authoring environment could not read the target repository (GitHub returned Repository not found). Push permission and deployment remain unverified. The original Linux home directory was unavailable from Windows.
+## Deployment
+
+Site: https://dasoncai.github.io/dasoncai/
+
+Push main to publish through the included GitHub Pages workflow. GitHub Pages source must be GitHub Actions.

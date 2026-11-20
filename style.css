@@ -18,3 +18,8 @@ h1,h2,h3{font-family:var(--font-heading);font-weight:600}
 .card-body p,.markdown-body p,.markdown-body li,.detail-heading>p,.heading-line p,footer p{font-family:var(--font-body);font-weight:400}
 
 .article-body th,.article-body td{font-family:var(--font-technical);font-weight:500}
+
+/* Preserve all text and specifications in editorial cover images. */
+.experiment-card .real-cover img{object-fit:contain}
+.article-body>.real-cover{aspect-ratio:auto;max-height:none;display:block}
+.article-body>.real-cover img{display:block;width:100%;height:auto;object-fit:contain}

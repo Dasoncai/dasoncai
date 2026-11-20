@@ -13,7 +13,10 @@ related:
 - x5-mipi
 - isp-workflow
 - x5-yolo
-cover: null
+cover:
+  src: assets/sc233hgs-x5/cover-verified-1320x800.webp
+  alt: "RDK X5 and SC233HGS product illustration: author-confirmed 1920x1080 at 120fps and 960x600 at 240fps in Binning mode"
+  kind: illustration
 gallery: []
 videos: []
 performance: null
@@ -40,7 +43,16 @@ evidence:
 
 Integrate an SC233HGS camera module with RDK X5, deploy the driver, capture RAW data and validate a preview, then investigate IQ tuning and YUV output with reproducible configurations and evidence.
 
-**This is an experiment plan. Module/connection photos, driver configuration, capture logs and real images have not yet been supplied. No completed bring-up is claimed.**
+**The author has confirmed the two frame-rate configurations below. Documentation is still in progress: module/connection photos, driver configuration, logs and IQ results are pending. The cover is a product illustration, not a module photograph.**
+
+## Author-confirmed frame rates
+
+| Resolution | Frame rate | Mode | Source |
+| --- | --- | --- | --- |
+| 1920 × 1080 | 120fps | Verified configuration | Author confirmation |
+| 960 × 600 | 240fps | Binning mode | Author confirmation |
+
+These results were provided by the author. Environment details, mode configuration and original logs are pending. Frame-rate confirmation does not imply completed IQ validation, and the generated cover is not capture evidence.
 
 ## CMOS image sensor brief
 
@@ -72,4 +84,4 @@ Confirm whether the module is color or monochrome, and choose applicable tuning 
 
 ## Results, troubleshooting and reproduction
 
-Pending: module/connection photos, RAW frames and previews, deployment logs and source revisions, original YUV, IQ comparisons, demo videos, issue investigation and a complete reproduction sequence. Measured frame rates, latency and image-quality metrics will be added only after testing.
+Pending: module/connection photos, RAW frames and previews, deployment logs and source revisions, original YUV, IQ comparisons, demo videos, issue investigation and a complete reproduction sequence. Author-confirmed frame rates are listed above. Detailed measurement records, latency and image-quality metrics remain pending.
